@@ -17,7 +17,7 @@ module.exports = function (app, express) {
 
     //app.use((err, req, res, next) => res.status(500).send(err));
 
-    app.get('/*', (req, res) => res.sendFile(config.root + '/public/index.html'));
+    app.all('/*', (req, res) => res.status(404).send('Route not found'));
 };
 
 function addUser(req, res, next) {
