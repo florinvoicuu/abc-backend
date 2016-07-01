@@ -21,7 +21,9 @@ var crud = new CRUD({
     properties: ['email']
 });
 
-describe('User', () => co( function *() {
+describe('User', function () {
+
+    this.timeout(10000);
     // Clear relevant collections
     before(done => co(function *() {
         yield new Promise(resolve => mongoose.connection.collections['users'].drop(resolve));
@@ -70,4 +72,4 @@ describe('User', () => co( function *() {
             expect(res.body._id).to.be.a('string', util.errMsg(res, 'body'));
         }));
     });
-}));
+});

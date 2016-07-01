@@ -6,6 +6,7 @@ module.exports = {
     env: process.env.NODE_ENV || 'test',
     root: path.normalize(__dirname + '/..'),
     port: process.env.SCOUTSOCIETY_PORT || 3007,
+    remote: process.env.SCOUTSOCIETY_REMOTE || 3014,
     ip: process.env.IP || null,
     mongodb: {
         uri: process.env.NODE_ENV === 'test' ?

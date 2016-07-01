@@ -21,7 +21,9 @@ var crud = new CRUD({
     properties: ['user', 'name', 'description','image', 'badge']
 });
 
-describe('Commenter', () => {
+describe('Commenter', function () {
+    this.timeout(10000);
+
     before(done => co(function *() {
         yield new Promise(resolve => mongoose.connection.collections['users'].drop(resolve));
         yield new Promise(resolve => mongoose.connection.collections['comments'].drop(resolve));
