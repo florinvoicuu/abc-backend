@@ -10,14 +10,14 @@ var config       = require('./config');
 var winston      = require(config.root + '/modules/winston')(config);
 
 module.exports = function (app, express) {
+    app.use(cors({ origin: 'http://dev2.florin.scoutech', credentials: true }));
     app.set('trust proxy', true);
     app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
     app.use(bodyParser.json({limit: '10mb'}));
     app.use(cookieParser());
     app.use(useragent.express());
     app.use(ewinston.errorLogger({ winstonInstance: winston }));
-    app.options('/*', cors());
-    app.use(cors());
+    //app.options('*', cors());
     app.use(express.static(config.root + '/node_modules'));
     app.use(express.static(config.root + '/public'));
 };
